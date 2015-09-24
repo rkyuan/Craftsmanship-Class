@@ -1,0 +1,16 @@
+package orange;
+
+public class Opad extends AbstractProduct{
+	public Opad(SerialNumber serialNumber) {
+		super(serialNumber);
+		// TODO Auto-generated constructor stub
+	}
+
+	public static boolean isValidSerialNumber(SerialNumber s){
+		return (s.isEven()&&s.testBit(2));
+	}
+	public ProductType getProductType(){
+		return ProductType.OPAD;
+		
+	}
+}

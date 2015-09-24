@@ -1,0 +1,11 @@
+package orange;
+
+public class ProductType {
+	private String Ptype;
+	public ProductType(String type){
+		Ptype = type;
+	}
+	public String getType(){
+		return Ptype;
+	}
+}

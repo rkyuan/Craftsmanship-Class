@@ -1,0 +1,18 @@
+package orange;
+
+public enum ProductType {
+	OPOD,OPAD,OPHONE,OWATCH,OTV;
+	public String getName(){
+		switch(this){
+		case OPOD: return "oPod";
+		case OPAD: return "oPad";
+		case OPHONE: return "oPhone";
+		case OWATCH: return "oWatch";
+		case OTV: return "oTv";
+		default:
+			return "";
+		
+		}
+	}
+}
+

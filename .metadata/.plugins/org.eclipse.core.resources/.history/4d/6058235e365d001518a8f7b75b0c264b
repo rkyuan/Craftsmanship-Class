@@ -1,0 +1,14 @@
+package orange;
+
+import java.math.BigInteger;
+
+public class Ophone extends AbstractProduct {
+	
+	public Ophone(SerialNumber serialNumber) {
+		super(serialNumber);
+	}
+
+	public static boolean isValidSerialNumber(SerialNumber s){
+		return (s.isOdd()&&s.gcd(new SerialNumber(630)).compareTo(new BigInteger("42"))==1);
+	}
+}

@@ -1,0 +1,47 @@
+package orange;
+
+import java.util.Optional;
+import java.util.Set;
+
+public abstract class AbstractProduct implements Product{
+	
+	protected SerialNumber serial;
+	protected String Pname;
+	protected ProductType Ptype;
+	
+	
+	
+	public AbstractProduct( SerialNumber serialNumber/*, Optional<Set<String>>description*/){
+		serial = serialNumber;
+	}
+	
+	public SerialNumber getSerialNumber(){
+		return serial;
+	}
+	public String getProductName(){
+		return Pname;
+	}
+	public Optional<Set<String>> getDescription(){
+		
+		return null;
+	}
+	public ProductType getProductType(){
+		return Ptype;
+	}
+	public String toString(){
+		
+		//add together information
+		return"";
+		
+	}
+	@Override
+	 public boolean equals(Object p){
+		return false;
+		
+	}
+	@Override
+	public int hashCode(){
+		return serial.getSerialNumber().hashCode();
+	}
+	
+}

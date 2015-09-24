@@ -1,0 +1,10 @@
+package orange;
+
+public class ProductException extends Exception {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2559972053623642954L;
+
+}

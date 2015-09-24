@@ -1,0 +1,19 @@
+package orange;
+
+public enum ProductType {
+	
+	OPOD ("oPod"),
+	OPAD ("oPad"),
+	OPHONE ("oPhone"),
+	OWATCH ("oWatch"),
+	OTV ("oTv");
+	
+	private final String pName;
+	ProductType(String name){
+		pName = name;
+	}
+	public String getName(){
+		return pName;
+	}
+}
+

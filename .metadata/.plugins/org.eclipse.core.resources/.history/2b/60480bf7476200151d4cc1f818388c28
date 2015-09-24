@@ -1,0 +1,12 @@
+package orange;
+
+public class Exchange implements Request {
+
+	@Override
+	public void process(Product product, RequestStatus status)
+			throws RequestException {
+		// TODO Auto-generated method stub
+
+	}
+
+}

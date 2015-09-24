@@ -1,0 +1,16 @@
+package orange;
+
+public class Opod extends AbstractProduct{
+	public Opod(SerialNumber a) {
+		super(a);
+	}
+
+	public static boolean isValidSerialNumber(SerialNumber s){
+		return (s.isEven()&&!s.testBit(2));
+	}
+	public ProductType getProductType(){
+		return ProductType.OPOD;
+		
+	}
+
+}

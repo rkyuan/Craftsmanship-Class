@@ -1,0 +1,10 @@
+package orange;
+
+public interface Product {
+	
+	public SerialNumber getSerialNumber();
+	public ProductType getProductType();
+	public String getProductName();
+	//public Optional<Set<String>> getDescription;//?
+	
+}

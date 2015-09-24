@@ -1,0 +1,5 @@
+package orange;
+
+public enum ProductType {
+	OPOD,OPAD,OPHONE,OWATCH,OTV
+}

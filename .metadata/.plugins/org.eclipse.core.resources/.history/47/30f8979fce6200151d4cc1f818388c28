@@ -1,0 +1,14 @@
+package orange;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class requestTest {
+	@Test
+	public void test() {
+		Exchange.Builder b = new Exchange.Builder();
+		b.build();
+	}
+
+}

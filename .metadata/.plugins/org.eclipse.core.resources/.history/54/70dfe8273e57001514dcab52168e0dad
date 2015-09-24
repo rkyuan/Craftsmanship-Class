@@ -1,0 +1,5 @@
+package orange;
+
+public abstract class AbstractProduct {
+
+}

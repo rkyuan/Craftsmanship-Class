@@ -1,0 +1,80 @@
+package orange;
+
+import java.util.Optional;
+import java.util.Set;
+
+import orange.ProductException.ErrorCode;
+
+public abstract class AbstractProduct implements Product{
+	
+	protected SerialNumber serial;
+	protected String Pname;
+	protected ProductType Ptype;
+	protected Optional<Set<String>>describe;
+	
+	
+	
+	public AbstractProduct( SerialNumber serialNumber, Optional<Set<String>>description){
+		serial = serialNumber;
+		describe = description;
+	}
+	
+	public SerialNumber getSerialNumber(){
+		return serial;
+	}
+	public String getProductName(){
+		return Pname;
+	}
+	public ProductType getProductType(){
+		return Ptype;
+	}
+	public Optional<Set<String>> getDescription(){
+		
+		return null;
+	}
+	
+	public String toString(){
+		
+		//add together information
+		return"";
+		
+	}
+	@Override
+	 public boolean equals(Object p){
+		return false;
+		
+	}
+	@Override
+	public int hashCode(){
+		return serial.getSerialNumber().hashCode();
+	}
+	
+	public static Product make(ProductType productType,SerialNumber serialNumber, Optional<Set<String>> Description)
+			throws ProductException{
+		ProductException badNumber = new ProductException(productType,serialNumber,ErrorCode.INVALID_SERIAL_NUMBER);
+		switch (productType){
+		case OPAD: 
+			if (!Opad.isValidSerialNumber(serialNumber)) throw badNumber;
+			return new Opad(serialNumber,Description);
+		case OPHONE: 
+			if (!Ophone.isValidSerialNumber(serialNumber)) throw badNumber;
+			return new Ophone(serialNumber,Description);
+		case OPOD:
+			if (!Opod.isValidSerialNumber(serialNumber)) throw badNumber;
+			return new Opod(serialNumber,Description);
+		case OTV:
+			if (!Otv.isValidSerialNumber(serialNumber)) throw badNumber;
+			return new Otv(serialNumber,Description);
+		case OWATCH:
+			if (!Owatch.isValidSerialNumber(serialNumber)) throw badNumber;
+			return new Owatch(serialNumber, Description);
+		default:
+			throw new ProductException(productType,serialNumber,ErrorCode.INVALID_PRODUCT_TYPE);
+		
+		}
+		
+		
+	}
+	
+	
+}

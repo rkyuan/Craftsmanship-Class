@@ -1,0 +1,18 @@
+package orange;
+
+public class Otv extends AbstractProduct{
+	public Otv(SerialNumber serialNumber) {
+		super(serialNumber);
+		// TODO Auto-generated constructor stub
+	}
+
+	public static boolean isValidSerialNumber(SerialNumber s){
+		int g = s.gcd(new SerialNumber(630)).intValue();
+		
+		return (s.isOdd()&&g<=14);
+	}
+	public ProductType getProductType(){
+		return ProductType.OTV;
+		
+	}
+}

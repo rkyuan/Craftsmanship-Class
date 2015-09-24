@@ -1,0 +1,22 @@
+package orange;
+
+import java.math.BigInteger;
+
+public class Refund implements Request {
+	
+	private Refund (Builder builder){
+		
+	}
+	
+	public BigInteger getRma(){
+		
+	}
+
+	@Override
+	public void process(Product product, RequestStatus status)
+			throws RequestException {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,9 @@
+package orange;
+
+public class Otv {
+	public static boolean isValidSerialNumber(SerialNumber s){
+		int g = s.gcd(new SerialNumber(630)).intValue();
+		
+		return (s.isOdd()&&g<=14);
+	}
+}

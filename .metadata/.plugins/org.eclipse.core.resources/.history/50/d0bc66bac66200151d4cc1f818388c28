@@ -1,0 +1,12 @@
+package orange;
+
+public class RequestException extends Exception {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6844620773730796273L;
+	
+	
+
+}
