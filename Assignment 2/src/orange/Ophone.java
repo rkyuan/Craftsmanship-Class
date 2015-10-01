@@ -32,4 +32,45 @@ public class Ophone extends AbstractProduct {
 			Optional<Set<String>> description) {
 		return new Ophone(serialNumber,description);
 	}
+	
+	@Override
+	public void process(Refund request, RequestStatus status)
+			throws ProductException {
+		for(int i = 2; i<= 8;i*=2){
+			if (Ophone.isValidSerialNumber(new SerialNumber(request.getRma().multiply(BigInteger.valueOf(i))))){
+				status.setScode(RequestStatus.StatusCode.OK);
+				return;
+			}
+			
+		}
+		status.setScode(RequestStatus.StatusCode.FAIL);
+		return;
+	}
+	
+	@Override
+	public void process(Exchange request, RequestStatus status)
+			throws ProductException {
+		int num =0;
+		BigInteger avg = BigInteger.valueOf(0);
+		for(SerialNumber s:request.getCompatibleProducts()){
+			if(s.getSerialNumber().compareTo(this.getSerialNumber().getSerialNumber())>1){
+				avg.add(s.getSerialNumber());
+				num++;
+			}
+		}
+		if (num==0){
+			status.setScode(RequestStatus.StatusCode.FAIL);
+			return;
+		}
+		avg = avg.divide(BigInteger.valueOf(num));
+		BigInteger max = BigInteger.valueOf(0);
+		for(SerialNumber s:request.getCompatibleProducts()){
+			if (max.compareTo(s.getSerialNumber())<0 && s.getSerialNumber().compareTo(avg)<0){
+				max=s.getSerialNumber();
+			}
+		}
+		status.setScode(RequestStatus.StatusCode.OK);
+		status.setResult(Optional.of(max));
+		return;
+	}
 }

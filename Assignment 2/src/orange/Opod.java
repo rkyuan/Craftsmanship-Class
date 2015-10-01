@@ -1,7 +1,10 @@
 package orange;
 
+import java.math.BigInteger;
 import java.util.Optional;
 import java.util.Set;
+
+import orange.ProductException.ErrorCode;
 
 public class Opod extends AbstractProduct{
 	Opod(){
@@ -29,6 +32,32 @@ public class Opod extends AbstractProduct{
 	public Product makeOther(SerialNumber serialNumber,
 			Optional<Set<String>> description) {
 		return new Opod(serialNumber,description);
+	}
+	
+	@Override
+	public void process(Refund request, RequestStatus status)
+			throws ProductException {
+		if (getSerialNumber().getSerialNumber().gcd(request.getRma()).compareTo(new BigInteger("24"))>0){
+			status.setScode(RequestStatus.StatusCode.OK);
+			return;
+		}
+		status.setScode(RequestStatus.StatusCode.FAIL);
+		return;
+		//don't know what to do with result
+	}
+	@Override
+	public void process(Exchange request, RequestStatus status)
+			throws ProductException {
+		for(SerialNumber s : request.getCompatibleProducts()){
+			if(Opod.isValidSerialNumber(s)){
+				status.setScode(RequestStatus.StatusCode.OK);
+				status.setResult(Optional.of(s.getSerialNumber()));
+				return;
+			}
+		}
+		status.setScode(RequestStatus.StatusCode.FAIL);
+		return;
+		
 	}
 
 }
